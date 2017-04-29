@@ -1,8 +1,8 @@
 int LED_red_pin = 5;
 int LED_green_pin = 6;
-int button_pin = 3;
+int button_pin = 2;
 int pot_pin = 0;
- 
+int system_button_pin = 9;
 int intensity_max = 255; 
 
 void diode_lightup();
@@ -14,6 +14,7 @@ void intensity_diode();
 void pot_diod();
 void pot_diodes();
 void diodes_changing();
+void security_button();
 
 
 void setup() {
@@ -26,7 +27,8 @@ void setup() {
 
 
 void loop() {
-   pot_diodes();
+   security_button();
+
 }
 
 
@@ -132,21 +134,41 @@ void diodes_changing(){
   }else if(analogRead(pot_pin)>200) {
       analogWrite(LED_green_pin, intensity_max/2);  
       analogWrite(LED_red_pin, intensity_max/2);  
-
   }else{ 
       analogWrite(LED_red_pin, intensity_max);   
       analogWrite(LED_green_pin, 0);  
-
   }
   
 }
 
 
 void pot_diodes(){
-  // pot -1023
-  //diodes -255
   int pot_reading = analogRead(pot_pin)/4;
   analogWrite(LED_green_pin, pot_reading);  
   analogWrite(LED_red_pin, 255 - pot_reading);  
 
+}
+
+
+void security_button(){
+ int buttonState = digitalRead(button_pin);
+ int system_on = 0;
+    
+   if (buttonState == HIGH) {       
+        digitalWrite(LED_green_pin, HIGH);  
+        system_on = 1;
+    } else {
+        digitalWrite(LED_green_pin, LOW); 
+        system_on = 0;
+    }
+    
+    if(system_on == 1){
+       int buttonSystemState = digitalRead(system_button_pin);
+          if(buttonSystemState == 1){
+                    digitalWrite(LED_red_pin, HIGH);  
+          } else  {                
+                    digitalWrite(LED_red_pin, LOW);  
+          }
+    }
+    
 }
