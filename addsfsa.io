@@ -153,22 +153,20 @@ void pot_diodes(){
 void security_button(){
  int buttonState = digitalRead(button_pin);
  int system_on = 0;
-    
-   if (buttonState == HIGH) {       
-        digitalWrite(LED_green_pin, HIGH);  
-        system_on = 1;
+    if (buttonState == HIGH) {     
+      digitalWrite(LED_green_pin, HIGH);  
+      system_on = 1;
     } else {
-        digitalWrite(LED_green_pin, LOW); 
-        system_on = 0;
+      digitalWrite(LED_green_pin, LOW); 
+      system_on = 0;
     }
-    
+  
     if(system_on == 1){
        int buttonSystemState = digitalRead(system_button_pin);
-          if(buttonSystemState == 1){
-                    digitalWrite(LED_red_pin, HIGH);  
-          } else  {                
-                    digitalWrite(LED_red_pin, LOW);  
-          }
+        if(buttonSystemState == 1){
+                  digitalWrite(LED_red_pin, HIGH);  
+        } else  {                
+                digitalWrite(LED_red_pin, LOW);  
+        }
     }
-    
 }
