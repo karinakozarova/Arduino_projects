@@ -3,9 +3,7 @@ int LED_green_pin = 6;
 int button_pin = 3;
 int pot_pin = 0;
  
- 
 int intensity_max = 255; 
-
 
 void diode_lightup();
 void diode_ping();
@@ -15,6 +13,8 @@ void button_reading_diodes_lighting();
 void intensity_diode();
 void pot_diod();
 void pot_diodes();
+void diodes_changing();
+
 
 void setup() {
   Serial.begin(9600);
@@ -24,11 +24,11 @@ void setup() {
   pinMode(pot_pin,INPUT);
 }
 
+
 void loop() {
    pot_diodes();
-
-
 }
+
 
 void diode_lightup(){
 
@@ -42,6 +42,7 @@ void diode_lightup(){
 
 }
 
+
 void diode_ping(){
   
   Serial.print("On\n");
@@ -54,6 +55,7 @@ void diode_ping(){
   
 }
 
+
 void switch_diodes(){
 
   digitalWrite(LED_red_pin, HIGH);   
@@ -63,9 +65,8 @@ void switch_diodes(){
   digitalWrite(LED_green_pin, HIGH);   
   digitalWrite(LED_red_pin, HIGH);  
   delay(1000);
-
-
 }
+
 
 void switch_diodes_seconds(){
   digitalWrite(LED_red_pin, HIGH);   
@@ -81,6 +82,7 @@ void switch_diodes_seconds(){
  
 }
 
+
 void button_reading_diodes_lighting(){
     if(digitalRead(button_pin) == HIGH){
         //button clicked
@@ -95,6 +97,7 @@ void button_reading_diodes_lighting(){
 
 }
 
+
 void intensity_diode(){
 
   analogWrite(LED_green_pin, intensity_max);  
@@ -108,6 +111,7 @@ void intensity_diode(){
 
 }
 
+
 void pot_diod(){
   
   if(analogRead(pot_pin)>600){
@@ -120,8 +124,7 @@ void pot_diod(){
 }
 
 
-
-void pot_diodes(){
+void diodes_changing(){
   
   if(analogRead(pot_pin)>600){
       analogWrite(LED_green_pin, intensity_max);  
@@ -136,4 +139,14 @@ void pot_diodes(){
 
   }
   
+}
+
+
+void pot_diodes(){
+  // pot -1023
+  //diodes -255
+  int pot_reading = analogRead(pot_pin)/4;
+  analogWrite(LED_green_pin, pot_reading);  
+  analogWrite(LED_red_pin, 255 - pot_reading);  
+
 }
