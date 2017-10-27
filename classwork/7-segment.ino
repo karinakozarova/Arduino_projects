@@ -1,63 +1,62 @@
-int pin1 = 1;
-int pin2 = 2;
-int pin3 = 3;
-int pin4 = 4;
-int pin5 = 5;
-int pin6 = 6;
-int pin7 = 7;
-int pin8 = 8;
+int a = 1;
+int b = 2;
+int c = 3;
+int d = 4;
+int e = 5;
+int f = 6;
+int g = 7;
+int dot = 8;
 
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(pin1,OUTPUT);
-  pinMode(pin2,OUTPUT);
-  pinMode(pin3,OUTPUT);
-  pinMode(pin4,OUTPUT);
-  pinMode(pin5,OUTPUT);
-  pinMode(pin6,OUTPUT);
-  pinMode(pin7,OUTPUT);
-  pinMode(pin8,OUTPUT);
-
+  pinMode(a,OUTPUT);
+  pinMode(b,OUTPUT);
+  pinMode(c,OUTPUT);
+  pinMode(d,OUTPUT);
+  pinMode(e,OUTPUT);
+  pinMode(f,OUTPUT);
+  pinMode(g,OUTPUT);
+  pinMode(dot,OUTPUT);
+  pinMode(9,OUTPUT); // first one
+  pinMode(10,OUTPUT); //second one
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  nulling();
-  digitalWrite(pin1,HIGH);
-  digitalWrite(pin2,HIGH);
-  digitalWrite(pin3,HIGH);
-  digitalWrite(pin4,HIGH);
-
-
+  all();
+  //digitalWrite(9,LOW);
+  //digitalWrite(a,LOW);
+  //digitalWrite(10,LOW);
+  //digitalWrite(a,LOW);
   delay(5000);
-  nulling();
+  all();
   delay(10000);
-  //digitalWrite(pin2,HIGH);
+  //digitalWrite(b,HIGH);
 
 }
 
 
 void nulling(){
-    digitalWrite(pin1,LOW);
-    digitalWrite(pin2,LOW);
-    digitalWrite(pin3,LOW);
-    digitalWrite(pin4,LOW);
-    digitalWrite(pin5,LOW);
-    digitalWrite(pin6,LOW);
-    digitalWrite(pin7,LOW);
-    digitalWrite(pin8,LOW);
+    digitalWrite(a,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(e,LOW);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(dot,LOW);
 
 }
 
 void all(){
-    digitalWrite(pin1,HIGH);
-    digitalWrite(pin2,HIGH);
-    digitalWrite(pin3,HIGH);
-    digitalWrite(pin4,HIGH);
-    digitalWrite(pin5,HIGH);
-    digitalWrite(pin6,HIGH);
-    digitalWrite(pin7,HIGH);
-    digitalWrite(pin8,HIGH);
+    digitalWrite(a,HIGH);
+    digitalWrite(b,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(d,HIGH);
+    digitalWrite(e,HIGH);
+    digitalWrite(f,HIGH);
+    digitalWrite(g,HIGH);
+    digitalWrite(dot,HIGH);
 
 }
